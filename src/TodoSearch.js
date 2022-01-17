@@ -3,8 +3,11 @@ import './TodoSearch.css';
 
 function TodoSearch() {
 
+    const [searchValue, setSearchValue] = React.useState(''); // React Hooks., Las actualizaciones de estado pueden ser asíncronas.
+
     const onSearchValueChange = (event) => {
-        console.log(event.target.value);
+        const value = event.target.value;
+        setSearchValue(value);
     }
 
     return (
