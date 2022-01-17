@@ -8,16 +8,10 @@ import { TodoTitle } from './TodoTitle';
 
 import './App.css';
 
-const todos = [
-  { text: 'Cortar cebollas', completed: false },
+const tasks = [
+  { text: 'Cortar cebollas', completed: true },
   { text: 'Tomar el curso de Introducción a React', completed: false },
-  { text: 'Marcar la tarea', completed: false },
-  { text: 'Tomar el curso de Introducción a React', completed: false },
-  { text: 'Marcar la tarea', completed: false },
-  { text: 'Tomar el curso de Introducción a React', completed: false },
-  { text: 'Marcar la tarea', completed: false },
-  { text: 'Tomar el curso de Introducción a React', completed: false },
-  { text: 'Marcar la tarea', completed: false },
+  { text: 'Marcar la tarea', completed: false }
 ];
 
 
@@ -32,8 +26,8 @@ function App() {
       <TodoSearch />
 
       <TodoList>
-        {todos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} />
+        {tasks.map(task => (
+          <TodoItem key={task.text} text={task.text} completed={task.completed} />
         ))}
       </TodoList>
 

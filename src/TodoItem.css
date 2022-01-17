@@ -1,21 +1,27 @@
 .TodoItem {
-    width: 100%;
-    min-height: 60px;
-    display: flex;
-    background: white;
     align-items: center;
-    font-size: 16px;
+    background: white;
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
     box-shadow: 0px 3px 4px 2px #f8faff;
     color: #42465e;
-}
-
-.TodoItem span {
+    /* cursor: pointer; */
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 15px;
+    min-height: 60px;
+    padding: 15px;
     width: 100%;
 }
 
-.TodoItem i {
+.TodoItem-text {
+    width: 100%;
+}
+
+.TodoItem-text--marked {
+    text-decoration: line-through;
+}
+
+.TodoItem-icon {
     margin-right: 10px;
+    cursor: pointer;
 }
