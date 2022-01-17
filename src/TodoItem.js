@@ -1,11 +1,12 @@
 import React from "react";
+import './TodoItem.css';
 
 function TodoItem(props) {
     return (
-        <li>
-            <span>C</span>
-            <p>{props.text}</p>
-            <p>X</p>
+        <li className="TodoItem">
+            <i aria-hidden="true">C</i>
+            <span>{props.text}</span>
+            <i aria-hidden="true">X</i>
         </li>
     );
 }

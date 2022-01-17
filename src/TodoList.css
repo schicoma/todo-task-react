@@ -1,0 +1,7 @@
+.TodoList {
+    margin: 15px 24px 30px;
+}
+
+.TodoList > ul {
+    list-style: none;
+}

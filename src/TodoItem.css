@@ -1,0 +1,21 @@
+.TodoItem {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    background: white;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 4px 2px #f8faff;
+    color: #42465e;
+}
+
+.TodoItem span {
+    width: 100%;
+}
+
+.TodoItem i {
+    margin-right: 10px;
+}
