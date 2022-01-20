@@ -9,16 +9,33 @@ import { AppUI } from './AppUI';
 //   { text: 'Marcar la tarea', completed: false }
 // ];
 
+function useLocalStorage(itemName, initialValue = []) {
+  let itemFromStorage = initialValue;
 
-function App() {
-  let tasksFromStorage = undefined;
-
-  const data = localStorage.getItem('tasks');
+  const data = localStorage.getItem(itemName);
   if (data) {
-    tasksFromStorage = JSON.parse(localStorage.getItem('tasks'));
+    itemFromStorage = JSON.parse(localStorage.getItem(itemName));
   }
 
-  const [tasks, setTasks] = React.useState(tasksFromStorage);
+  const [item, setItem] = React.useState(itemFromStorage);
+
+  const saveItem = (item) => {
+    localStorage.setItem(itemName, JSON.stringify(item));
+    setItem(item);
+  }
+
+  return [
+    item,
+    saveItem
+  ];
+
+}
+
+function App() {
+
+  // usando custom hook
+  const [tasks, saveTasks] = useLocalStorage('tasks', []);
+
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTasks = tasks.filter(task => !!task.completed).length;
@@ -39,7 +56,6 @@ function App() {
     if (index !== -1) {
       const newTasks = [...tasks];
       newTasks[index].completed = !newTasks[index].completed;
-      setTasks(newTasks);
 
       saveTasks(newTasks);
     }
@@ -51,16 +67,12 @@ function App() {
     if (index !== -1) {
       const newTasks = [...tasks];
       newTasks.splice(index, 1);
-      setTasks(newTasks);
 
       saveTasks(newTasks);
     }
 
   };
 
-  const saveTasks = (tasks) => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
 
   // usar React.Fragment para envolver varios componentes, sin la 
   // necesidad de usar etiquetas div innecesarias
