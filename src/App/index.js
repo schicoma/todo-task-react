@@ -1,12 +1,7 @@
 import React from 'react';
-import { CreateTodoButton } from './CreateTodoButton';
-import { TodoCounter } from './TodoCounter';
-import { TodoItem } from './TodoItem';
-import { TodoList } from './TodoList';
-import { TodoSearch } from './TodoSearch';
-import { TodoTitle } from './TodoTitle';
-
 import './App.css';
+import { AppUI } from './AppUI';
+
 
 const defaultTasks = [
   { text: 'Cortar cebollas', completed: true },
@@ -31,16 +26,6 @@ function App() {
     filteredTasks = tasks;
   }
 
-  // const completeTask = (text) => {
-  //   const index = tasks.findIndex(task => task.text === text);
-
-  //   if (index !== -1) {
-  //     const newTasks = [...tasks];
-  //     newTasks[index].completed = true;
-  //     setTasks(newTasks);
-  //   }
-  // };
-
   const toggleCompleteTask = (text) => {
     const index = tasks.findIndex(task => task.text === text);
 
@@ -59,39 +44,23 @@ function App() {
       newTasks.splice(index, 1);
       setTasks(newTasks);
     }
-    
+
   };
 
   // usar React.Fragment para envolver varios componentes, sin la 
   // necesidad de usar etiquetas div innecesarias
   return (
-    <React.Fragment>
-      <TodoTitle></TodoTitle>
-      <TodoCounter
-        completed={completedTasks}
-        total={totalTasks}
-      />
+    <AppUI
 
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      completed={completedTasks}
+      total={totalTasks}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      filteredTasks={filteredTasks}
+      onCompleteTask={toggleCompleteTask}
+      onDeleteTask={deleteTask}
 
-      <TodoList>
-        {filteredTasks.map(task => (
-          <TodoItem
-            key={task.text}
-            text={task.text}
-            completed={task.completed}
-            onComplete={() => toggleCompleteTask(task.text)}
-            onDelete={() => deleteTask(task.text)}
-          />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton />
-
-    </React.Fragment>
+    />
   );
 }
 
