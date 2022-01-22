@@ -8,6 +8,7 @@ function TodoProvider(props) {
     // usando custom hook
     const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage('tasks', []);
 
+    const [openModal, setOpenModal] = React.useState();
     const [searchValue, setSearchValue] = React.useState('');
 
     const completedTasks = tasks.filter(task => !!task.completed).length;
@@ -55,7 +56,9 @@ function TodoProvider(props) {
             setSearchValue,
             filteredTasks,
             onCompleteTask: toggleCompleteTask,
-            onDeleteTask: deleteTask
+            onDeleteTask: deleteTask,
+            openModal,
+            setOpenModal
         }}>
             {props.children}
         </TodoContext.Provider>

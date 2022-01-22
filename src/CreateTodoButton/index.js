@@ -1,22 +1,20 @@
 import React from "react";
-import { useLocalStorage } from "../TodoContext/useLocalStorage";
 import './CreateTodoButton.css';
 
-function CreateTodoButton() {
+function CreateTodoButton({ openModal, setOpenModal }) {
 
-    const {saveItem} = useLocalStorage('tasks');
+    // const { saveItem } = useLocalStorage('tasks');
 
     const onClickButton = (message) => {
-        alert(message);
+        // alert(message);
+        // let defaultTasks = [
+        //     { text: 'Cortar cebollas', completed: true },
+        //     { text: 'Tomar el curso de Introducción a React', completed: false },
+        //     { text: 'Marcar la tarea', completed: false }
+        // ];
+        // saveItem(defaultTasks);
 
-        let defaultTasks = [
-            { text: 'Cortar cebollas', completed: true },
-            { text: 'Tomar el curso de Introducción a React', completed: false },
-            { text: 'Marcar la tarea', completed: false }
-        ];
-
-        saveItem(defaultTasks);
-
+        setOpenModal(prevState => !prevState);
     };
 
     return (
@@ -26,7 +24,7 @@ function CreateTodoButton() {
                 // onClick={onClickButton}
                 onClick={() => { onClickButton('mensaje') }}
             >
-                +
+                {!openModal ? '+' : '-'}
             </button>
         </div>
     );

@@ -15,7 +15,7 @@ function TodoSearch() {
         <div className="TodoSearch">
             <input
                 onChange={onSearchValueChange}
-                placeholder="Escriba su tarea" />
+                placeholder="Filtro" />
         </div>
     );
 }
