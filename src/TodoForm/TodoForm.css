@@ -1,0 +1,54 @@
+.TodoForm {
+    background-color: white;
+    border-radius: 6px;
+    width: 500px;
+    padding: 20px 30px;
+}
+
+.TodoForm label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.TodoForm label span {
+    margin-bottom: 5px;
+}
+
+.TodoForm label textarea {
+    font-family: "Open Sans", sans-serif;
+    resize: none;
+    padding: 5px 10px;
+}
+
+.TodoForm .buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TodoForm button {
+    font-family: "Open Sans", sans-serif;
+    margin-left: 8px;
+    padding: 6px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+
+.TodoForm button:hover {
+    background-color: #ebebeb;
+}
+
+.TodoForm .button--cancel {
+    background: white;
+}
+
+.TodoForm .button--submit {
+    font-weight: bold;
+    background: #2c6aff;
+    color: white;
+}
+
+.TodoForm .button--submit:hover {
+    background: #427afd;
+}

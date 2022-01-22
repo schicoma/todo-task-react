@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+.TodoItem--marked {
+    background-color: #f1f1f1;
+}
+
 .TodoItem-text {
     width: 100%;
 }

@@ -6,7 +6,7 @@ import './TodoItem.css';
 function TodoItem(props) {
 
     return (
-        <li className={"TodoItem"}>
+        <li className={`TodoItem ${props.completed && 'TodoItem--marked'}`}>
             {/* <FontAwesomeIcon icon={['fas', 'fa-adjust']} /> no fuincionará hasta importar los iconos al proyecto */}
             <div className="TodoItem-icon">
                 <FontAwesomeIcon icon={props.completed ? faCheckCircle : faCircle} onClick={props.onComplete} />

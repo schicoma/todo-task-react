@@ -43,7 +43,15 @@ function TodoProvider(props) {
 
             saveTasks(newTasks);
         }
+    };
 
+    const addTask = (text) => {
+        const newTask = [...tasks];
+        newTask.push({
+            text, completed: false
+        });
+
+        saveTasks(newTask);
     };
 
     return (
@@ -57,6 +65,7 @@ function TodoProvider(props) {
             filteredTasks,
             onCompleteTask: toggleCompleteTask,
             onDeleteTask: deleteTask,
+            addTask,
             openModal,
             setOpenModal
         }}>

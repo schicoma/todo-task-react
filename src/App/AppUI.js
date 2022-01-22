@@ -1,12 +1,14 @@
 import React from "react";
+import { CreateTodoButton } from "../CreateTodoButton";
+import { Modal } from "../Modal";
+import { TodoContext } from "../TodoContext";
 import { TodoCounter } from "../TodoCounter";
+import { TodoForm } from "../TodoForm";
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
+import { TodoLoading } from "../TodoLoading";
 import { TodoSearch } from "../TodoSearch";
 import { TodoTitle } from "../TodoTitle";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { TodoContext } from "../TodoContext";
-import { Modal } from "../Modal";
 
 function AppUI() {
 
@@ -33,7 +35,7 @@ function AppUI() {
 
             <TodoList>
                 {error && <p>Hubo un error.</p>}
-                {loading && <p>Cargando ...</p>}
+                {loading && <TodoLoading />}
                 {(!error && !loading && !total) && <p>Ingresa tu primera tarea :)</p>}
 
                 {filteredTasks.map(task => (
@@ -50,7 +52,7 @@ function AppUI() {
             {
                 openModal && (
                     <Modal>
-                        <p>Este es un modal: {loading.toString()}</p>
+                        <TodoForm />
                     </Modal>
                 )
             }

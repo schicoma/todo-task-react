@@ -6,7 +6,7 @@ const Modal = (props) => {
 
     return ReactDOM.createPortal(
         <div className="ModalBackground">
-            props.children,
+            {props.children}
         </div>,
         document.getElementById('modal')
     );
