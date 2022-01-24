@@ -19,6 +19,7 @@
 
 .TodoItem-text {
     width: 100%;
+    word-break: break-word;
 }
 
 .TodoItem-text--marked {

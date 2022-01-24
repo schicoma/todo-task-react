@@ -11,7 +11,9 @@ function TodoItem(props) {
             <div className="TodoItem-icon">
                 <FontAwesomeIcon icon={props.completed ? faCheckCircle : faCircle} onClick={props.onComplete} />
             </div>
-            <span className={`TodoItem-text ${props.completed && 'TodoItem-text--marked'}`}>{props.text}</span>
+            <div className={`TodoItem-text ${props.completed && 'TodoItem-text--marked'}`}>
+                <span>{props.text}</span>
+            </div>
             <div className="TodoItem-icon">
                 <FontAwesomeIcon icon={faTrashAlt} onClick={props.onDelete} />
             </div>
