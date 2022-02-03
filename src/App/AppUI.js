@@ -9,18 +9,21 @@ import { TodoList } from "../TodoList";
 import { TodoLoading } from "../TodoLoading";
 import { TodoSearch } from "../TodoSearch";
 import { TodoTitle } from "../TodoTitle";
+import { TodoHeader } from "./TodoHeader";
 
 function AppUI() {
 
     const {
+        completed,
+        total,
         error,
         loading,
-        total,
         filteredTasks,
         onCompleteTask,
         onDeleteTask,
         openModal,
-        setOpenModal
+        setOpenModal,
+        setSearchValue
     } = React.useContext(TodoContext);
 
     return (
@@ -28,10 +31,16 @@ function AppUI() {
         // necesidad de usar etiquetas div innecesarias
         <React.Fragment>
 
-            <TodoTitle />
-
-            <TodoCounter />
-            <TodoSearch />
+            <TodoHeader>
+                <TodoTitle />
+                <TodoCounter
+                    completed={completed}
+                    total={total}
+                />
+                <TodoSearch
+                    setSearchValue={setSearchValue}
+                />
+            </TodoHeader>
 
             <TodoList>
                 {error && <p>Hubo un error.</p>}
