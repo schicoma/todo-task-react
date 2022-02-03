@@ -1,18 +1,32 @@
 import React from 'react';
-import './App.css';
-import { AppUI } from './AppUI';
-import { TodoProvider } from '../TodoContext';
-import { TodoTitle } from '../TodoTitle';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { Modal } from '../Modal';
+import { useTodos } from '../TodoContext/useTodos';
 import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
+import { TodoForm } from '../TodoForm';
+import { TodoHeader } from './TodoHeader';
+import { TodoItem } from '../TodoItem';
 import { TodoList } from '../TodoList';
 import { TodoLoading } from '../TodoLoading';
-import { TodoItem } from '../TodoItem';
-import { TodoForm } from '../TodoForm';
-import { Modal } from '../Modal';
-import { CreateTodoButton } from '../CreateTodoButton';
+import { TodoSearch } from '../TodoSearch';
+import { TodoTitle } from '../TodoTitle';
+import './App.css';
 
 function App() {
+
+  const {
+    completed,
+    total,
+    error,
+    loading,
+    filteredTasks,
+    onCompleteTask,
+    addTask,
+    onDeleteTask,
+    openModal,
+    setOpenModal,
+    setSearchValue
+  } = useTodos();
 
   return (
     <React.Fragment>
@@ -47,7 +61,9 @@ function App() {
       {
         openModal && (
           <Modal>
-            <TodoForm />
+            <TodoForm
+              addTask={addTask}
+              setOpenModal={setOpenModal} />
           </Modal>
         )
       }
