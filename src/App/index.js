@@ -20,6 +20,7 @@ function App() {
     error,
     loading,
     filteredTasks,
+    searchValue,
     onCompleteTask,
     addTask,
     onDeleteTask,
@@ -36,18 +37,36 @@ function App() {
         <TodoCounter
           completed={completed}
           total={total}
+          isLoading={loading}
         />
         <TodoSearch
           setSearchValue={setSearchValue}
+          isLoading={loading}
         />
       </TodoHeader>
 
-      <TodoList>
-        {error && <p>Hubo un error.</p>}
-        {loading && <TodoLoading />}
-        {(!error && !loading && !total) && <p>Ingresa tu primera tarea :)</p>}
+      <TodoList
+        tasks={filteredTasks}
+        error={error}
+        loading={loading}
+        totalTasks={total}
 
-        {filteredTasks.map(task => (
+        onError={errorObj => (<p>{errorObj.message}</p>)}
+        onLoading={() => (<TodoLoading />)}
+        onEmptyTasks={() => (<p>Ingresa tu primera tarea :)</p>)}
+        onEmptySearchTasks={() => (<p>No hay resultados para el filtro {searchValue} </p>)}
+
+      // render={task => (
+      //   <TodoItem
+      //     key={task.text}
+      //     text={task.text}
+      //     completed={task.completed}
+      //     onComplete={() => onCompleteTask(task.text)}
+      //     onDelete={() => onDeleteTask(task.text)}
+      //   />
+      // )}
+      >
+        {task => (
           <TodoItem
             key={task.text}
             text={task.text}
@@ -55,7 +74,7 @@ function App() {
             onComplete={() => onCompleteTask(task.text)}
             onDelete={() => onDeleteTask(task.text)}
           />
-        ))}
+        )}
       </TodoList>
 
       {

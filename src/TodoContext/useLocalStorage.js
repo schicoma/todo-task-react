@@ -10,7 +10,7 @@ const useLocalStorage = (itemName, initialValue = []) => {
         setTimeout(() => {
             try {
 
-                // throw Error('my custom error');
+                // throw Error('Hubo un mini error');
                 const data = localStorage.getItem(itemName);
 
                 if (data) {
