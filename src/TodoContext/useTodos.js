@@ -4,7 +4,13 @@ import { useLocalStorage } from "./useLocalStorage";
 function useTodos() {
 
     // usando custom hook
-    const { item: tasks, saveItem: saveTasks, loading, error } = useLocalStorage('tasks', []);
+    const { 
+        item: tasks, 
+        saveItem: saveTasks, 
+        loading, 
+        error,
+        synchronize
+    } = useLocalStorage('tasks', []);
 
     const [openModal, setOpenModal] = React.useState();
     const [searchValue, setSearchValue] = React.useState('');
@@ -52,6 +58,10 @@ function useTodos() {
         saveTasks(newTask);
     };
 
+    const synchronizeTasks  = () => {
+        synchronize();
+    } 
+
     return {
         loading,
         error,
@@ -64,7 +74,8 @@ function useTodos() {
         onDeleteTask: deleteTask,
         addTask,
         openModal,
-        setOpenModal
+        setOpenModal,
+        synchronizeTasks
     };
 }
 

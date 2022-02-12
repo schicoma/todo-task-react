@@ -1,0 +1,27 @@
+.ChangeAlert {
+    position: fixed;
+    top: 0;
+    background: #cdcdcd91;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ChangeAlert--container {
+    width: 350px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 3px 4px 2px #c3c3c3;
+}
+.ChangeAlert--container p {
+    margin-bottom: 20px;
+}
+
+.ChangeAlert--container button {
+    padding: 5px 8px;
+}

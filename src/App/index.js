@@ -4,13 +4,14 @@ import { Modal } from '../Modal';
 import { useTodos } from '../TodoContext/useTodos';
 import { TodoCounter } from '../TodoCounter';
 import { TodoForm } from '../TodoForm';
-import { TodoHeader } from './TodoHeader';
+import { TodoHeader } from '../TodoHeader';
 import { TodoItem } from '../TodoItem';
 import { TodoList } from '../TodoList';
 import { TodoLoading } from '../TodoLoading';
 import { TodoSearch } from '../TodoSearch';
 import { TodoTitle } from '../TodoTitle';
 import './App.css';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 function App() {
 
@@ -26,7 +27,9 @@ function App() {
     onDeleteTask,
     openModal,
     setOpenModal,
-    setSearchValue
+    setSearchValue,
+    setRefresh,
+    synchronizeTasks
   } = useTodos();
 
   return (
@@ -53,16 +56,6 @@ function App() {
         onLoading={() => (<TodoLoading />)}
         onEmptyTasks={() => (<p>Ingresa tu primera tarea :)</p>)}
         onEmptySearchTasks={() => (<p>No hay resultados para el filtro {searchValue} </p>)}
-
-      // render={task => (
-      //   <TodoItem
-      //     key={task.text}
-      //     text={task.text}
-      //     completed={task.completed}
-      //     onComplete={() => onCompleteTask(task.text)}
-      //     onDelete={() => onDeleteTask(task.text)}
-      //   />
-      // )}
       >
         {task => (
           <TodoItem
@@ -89,6 +82,10 @@ function App() {
         openModal={openModal}
         setOpenModal={setOpenModal}
       />
+
+      <div>
+        <ChangeAlertWithStorageListener synchronize={synchronizeTasks} />
+      </div>
 
     </React.Fragment>
   );

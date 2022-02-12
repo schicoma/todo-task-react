@@ -21,10 +21,10 @@ function TodoList(props) {
             <ul>
                 {loading && onLoading()}
                 {(!loading && !totalTasks) && onEmptyTasks()}
-                {(!loading && totalTasks && !tasks.length) && onEmptySearchTasks()}
+                {(!loading && !!totalTasks && !tasks.length) && onEmptySearchTasks()}
 
                 {/* {props.tasks.map(task => props.render(task))} */}
-                {!!renderFunction && tasks.map(renderFunction)}
+                {(!loading && !error) && !!renderFunction && tasks.map(renderFunction)}
 
             </ul>
         </section>
