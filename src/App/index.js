@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChangeAlert } from '../ChangeAlert';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
 import { useTodos } from '../TodoContext/useTodos';
@@ -11,7 +12,6 @@ import { TodoLoading } from '../TodoLoading';
 import { TodoSearch } from '../TodoSearch';
 import { TodoTitle } from '../TodoTitle';
 import './App.css';
-import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 function App() {
 
@@ -28,7 +28,6 @@ function App() {
     openModal,
     setOpenModal,
     setSearchValue,
-    setRefresh,
     synchronizeTasks
   } = useTodos();
 
@@ -84,7 +83,8 @@ function App() {
       />
 
       <div>
-        <ChangeAlertWithStorageListener synchronize={synchronizeTasks} />
+        {/* <ChangeAlertWithStorageListener synchronize={synchronizeTasks} /> */}
+        <ChangeAlert synchronize={synchronizeTasks} />
       </div>
 
     </React.Fragment>
